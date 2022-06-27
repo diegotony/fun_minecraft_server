@@ -1,0 +1,18 @@
+name: Terraform CI
+
+on: 
+  pull_request:
+    branches:
+      - main
+
+
+jobs:
+  terraform-validate:
+    uses: diegotony/gh-pipelines/.github/workflows/terraform-validate.yml@main
+    secrets:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+  terraform-plugin-tfdocs:
+    needs: terraform-validate
+    uses: diegotony/gh-pipelines/.github/workflows/terraform-plugin-tfdocs.yml@main
+
