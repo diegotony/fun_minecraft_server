@@ -1,7 +1,7 @@
 module "server" {
-  source          = "git::https://github.com/diegotony/aws_ec2_instance.git?ref=fix-tags"
+  source          = "git::https://github.com/diegotony/aws_ec2_instance.git?ref=v1.3.0"
   security_groups = ["${aws_security_group.this.name}"]
-  key_name        = "EC2-INSTANCE"
+  key_name        = "terraform"
   name            = var.name
   user_data       = <<EOF
     #! /bin/bash
