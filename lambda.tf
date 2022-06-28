@@ -2,11 +2,11 @@ module "lambda_mc_start" {
   source          = "git::https://github.com/diegotony/aws_lambda_function.git?ref=cloudwatch-rule"
   source_dir    = "${path.module}/src/functions/mc_start"
   function_name = "${var.name}-mc_start"
-  bucket        = aws_s3_bucket.this.id
   runtime       = "nodejs14.x"
   handler       = "index.handler"
   description   = var.description
-  environment_variables   = [{ INSTANCE_ID = module.server.id }]
+  environment   = { INSTANCE_ID = module.server.id }
+  
 }
 
 module "lambda_mc_shutdown" {
@@ -15,10 +15,9 @@ module "lambda_mc_shutdown" {
   function_name = "${var.name}-mc_shutdown"
   runtime       = "nodejs14.x"
   handler       = "index.handler"
-  bucket        = aws_s3_bucket.this.id
   description   = var.description
   cloudwatch_event_rule = "rate(20 minutes)"
-  environment_variables   = [{ INSTANCE_ID = module.server.id }, {MAX_HOURS = "8"}]
+  environment   = { INSTANCE_ID = module.server.id , MAX_HOURS = "8"}
   
 }
 

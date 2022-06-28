@@ -3,7 +3,6 @@ module "server" {
   security_groups = ["${aws_security_group.this.name}"]
   key_name        = "EC2-INSTANCE"
   name            = var.name
-  description     = var.description
   user_data       = <<EOF
     #! /bin/bash
     sudo yum update -y
@@ -27,5 +26,6 @@ module "server" {
     systemctl daemon-reload
     java -Xmx1024M -Xms1024M -jar /opt/minecraft/server/server.jar nogui
   EOF
+  tags = var.tags
 
 }
