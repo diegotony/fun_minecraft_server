@@ -1,20 +1,22 @@
 variable "minecraft_server_url" {
     type = string
-    default = "https://launcher.mojang.com/v1/objects/125e5adf40c659fd3bce3e66e67a16bb49ecc1b9/server.jar"
-    description = "(optional) describe your variable"
+    default = "https://launcher.mojang.com/v1/objects/e00c4052dac1d59a1188b2aa9d5a87113aaf1122/server.jar"
+    description = "Minecraft server URl (1.19 for default)"
 }
 
 variable "name" {
   type        = string
-  description = "fun_minecraft name"
+  description = "Server name"
 }
 
 variable "description" {
   type        = string
-  description = "give a description"
+  description = "Give a description to Server"
+  defaiult = "Just Survive"
 }
 
 variable "ingress" {
+  description = "Inbound Config"
   type = map(object({
     description = string
     from_port   = string
@@ -58,6 +60,7 @@ variable "ingress" {
 }
 
 variable "egress" {
+  description = "Outbound Config"
   type = map(object({
     description = string
     from_port   = string
@@ -83,5 +86,7 @@ variable "egress" {
 }
 
 variable "tags" {
-  type = any
+  description = "tags"
+  type = map
+  default = {"Environment" = "minecraft-server", "created-by" = "terraform", "owner" = "Notch"}
 }
