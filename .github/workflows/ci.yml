@@ -14,5 +14,10 @@ jobs:
 
   terraform-plugin-tfdocs:
     needs: terraform-validate
+    if: github.ref == 'refs/heads/main' 
     uses: diegotony/gh-pipelines/.github/workflows/terraform-plugin-tfdocs.yml@main
 
+  terraform-plugin-tfsec:
+    uses: diegotony/gh-pipelines/.github/workflows/terraform-plugin-tfsec.yml@main
+    secrets:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
