@@ -12,7 +12,7 @@ variable "name" {
 variable "description" {
   type        = string
   description = "Give a description to Server"
-  defaiult = "Just Survive"
+  default = "Just Survive"
 }
 
 variable "ingress" {
