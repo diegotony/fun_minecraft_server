@@ -17,7 +17,7 @@ module "lambda_mc_shutdown" {
   handler       = "index.handler"
   description   = var.description
   schedule_expression = "rate(20 minutes)"
-  environment   = { INSTANCE_ID = module.server.id , MAX_HOURS = "8"}
+  environment   = { INSTANCE_ID = module.server.id , MAX_HOURS = "6"}
   
 }
 
