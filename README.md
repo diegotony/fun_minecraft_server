@@ -10,7 +10,7 @@ module "minecraft_server" {
     tags = {"hey":"whats up"} # optional
 }
 ```
-## Diagrams
+## Resources
 ![architecture](diagram.png)
 
 <!-- BEGIN_TF_DOCS -->

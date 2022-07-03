@@ -32,6 +32,6 @@ jobs:
     secrets:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
-  diagram:
+  python-plugin-diagrams:
     uses: diegotony/gh-pipelines/.github/workflows/python-plugin-diagrams.yml@main
     if: github.ref == 'refs/heads/main' 

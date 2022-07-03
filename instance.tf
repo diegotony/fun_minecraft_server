@@ -1,4 +1,4 @@
-module "server" {
+module "minecraft_server" {
   source          = "git::https://github.com/diegotony/aws_ec2_instance.git?ref=main"
   security_groups = ["${aws_security_group.this.name}"]
   key_name        = "terraform"
