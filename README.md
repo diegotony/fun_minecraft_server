@@ -1,7 +1,7 @@
 # fun_minecraft_server
 Terraform Module to setup a minecraft server in AWS
 
-# How to use?
+## How to use?
 ```js
 module "minecraft_server" {
     source = "git::https://github.com/diegotony/fun_minecraft_server.git?ref=main"
@@ -10,6 +10,9 @@ module "minecraft_server" {
     tags = {"hey":"whats up"} # optional
 }
 ```
+## Diagrams
+![architecture](diagram.png)
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
