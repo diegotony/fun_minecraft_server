@@ -1,37 +1,19 @@
-name: Terraform Worflow
+name: Terraform CI
 
 on: 
   push:
     branches:
       - main
-
   pull_request:
     branches:
       - main
 
 jobs:
-  terraform-validate:
-    uses: diegotony/gh-pipelines/.github/workflows/terraform-validate.yml@main
-    if: github.event_name == 'pull_request'
+  iac:
+    permissions:
+      id-token: write
+      contents: read
+    uses: diegotony/gh-pipelines/.github/workflows/terraform-plugin-terragrunt-apply.yml@main
     secrets:
-      GH_TOKEN: ${{ secrets.GH_TOKEN }}
-
-  terraform-plugin-tfsec:
-    if: github.event_name == 'pull_request'
-    uses: diegotony/gh-pipelines/.github/workflows/terraform-plugin-tfsec.yml@main
-    secrets:
-      GH_TOKEN: ${{ secrets.GH_TOKEN }}
-
-  terraform-plugin-tfdocs:
-    if: github.event_name == 'pull_request'
-    uses: diegotony/gh-pipelines/.github/workflows/terraform-plugin-tfdocs.yml@main
-
-  semantic-release:
-    uses: diegotony/gh-pipelines/.github/workflows/semantic-release.yml@main
-    if: github.ref == 'refs/heads/main' 
-    secrets:
-      GH_TOKEN: ${{ secrets.GH_TOKEN }}
-
-  python-plugin-diagrams:
-    uses: diegotony/gh-pipelines/.github/workflows/python-plugin-diagrams.yml@main
-    if: github.ref == 'refs/heads/main' 
+      AWS_ACCESS_ROLE: ${{ secrets.AWS_ACCESS_ROLE }}
+      AWS_DEFAULT_REGION: us-east-1
